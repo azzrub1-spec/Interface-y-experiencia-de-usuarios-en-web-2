@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cheese Shop Nottingham Ltd</title>
+<meta name="description" content="Quesería artesanal en el centro de Nottingham. Especialistas en quesos británicos desde 2004. Envío 24h.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<!-- Preload critical CSS -->
+<link rel="preload" href="styles.css" as="style">
+<link rel="preload" href="app.js" as="script">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Josefin+Sans:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- INDEX CHEESE FOG CURSOR -->
+<div class="index-cursor-fog" id="index-cursor-fog" aria-hidden="true"></div>
+<div class="index-cursor-cheese" id="index-cursor-cheese" aria-hidden="true">🧀</div>
+
+<!-- SKIP LINK -->
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+<!-- ONBOARDING -->
+<div class="onboarding-overlay" id="onboarding" role="dialog" aria-modal="true" aria-labelledby="onboarding-title">
+  <!-- Step 1 -->
+  <div class="onboarding-modal">
+    <div class="onboarding-step active" id="step-1">
+      <div class="onboarding-hero">
+        <span class="onboarding-emoji" aria-hidden="true">🧀</span>
+        <h2 class="onboarding-title" id="onboarding-title">Bienvenido a<br><em>The Cheese Shop</em></h2>
+        <p class="onboarding-text">Quesería artesanal en el corazón de Nottingham desde 2004.</p>
+      </div>
+      <div class="onboarding-body">
+        <div class="onboarding-progress" aria-label="Paso 1 de 3" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3">
+          <div class="onboarding-dot active"></div>
+          <div class="onboarding-dot"></div>
+          <div class="onboarding-dot"></div>
+        </div>
+        <div class="onboarding-features">
+          <div class="onboarding-feature">
+            <span class="onboarding-feature-icon" aria-hidden="true">🛒</span>
+            <div class="onboarding-feature-text">
+              <h4>Catálogo Completo</h4>
+              <p>Más de 30 quesos artesanales con precios, descripciones y maridajes.</p>
+            </div>
+          </div>
+          <div class="onboarding-feature">
+            <span class="onboarding-feature-icon" aria-hidden="true">🚚</span>
+            <div class="onboarding-feature-text">
+              <h4>Envío 24 horas</h4>
+              <p>Entrega en toda el área de Nottingham al día siguiente de tu pedido.</p>
+            </div>
+          </div>
+          <div class="onboarding-feature">
+            <span class="onboarding-feature-icon" aria-hidden="true">☕</span>
+            <div class="onboarding-feature-text">
+              <h4>Visítanos en tienda</h4>
+              <p>Zona de café, tablas artesanales y experiencia quesera única.</p>
+            </div>
+          </div>
+        </div>
+        <div class="onboarding-actions">
+          <button class="onboarding-skip" onclick="closeOnboarding()" aria-label="Saltar introducción">Saltar</button>
+          <button class="onboarding-next" onclick="nextStep(2)" aria-label="Siguiente paso">Siguiente →</button>
+        </div>
+      </div>
+    </div>
+    <!-- Step 2 -->
+    <div class="onboarding-step" id="step-2">
+      <div class="onboarding-hero">
+        <span class="onboarding-emoji" aria-hidden="true">🔍</span>
+        <h2 class="onboarding-title">Encuentra tu<br><em>queso perfecto</em></h2>
+        <p class="onboarding-text">Usa filtros por categoría, precio y búsqueda para encontrar exactamente lo que buscas.</p>
+      </div>
+      <div class="onboarding-body">
+        <div class="onboarding-progress" role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="3" aria-label="Paso 2 de 3">
+          <div class="onboarding-dot"></div>
+          <div class="onboarding-dot active"></div>
+          <div class="onboarding-dot"></div>
+        </div>
+        <div class="onboarding-features">
+          <div class="onboarding-feature">
+            <span class="onboarding-feature-icon" aria-hidden="true">🏷️</span>
+            <div class="onboarding-feature-text">
+              <h4>Filtrar por categoría</h4>
+              <p>Suave, Duro, Azul, Cabra, Oveja o Quesos Británicos especiales.</p>
+            </div>
+          </div>
+          <div class="onboarding-feature">
+            <span class="onboarding-feature-icon" aria-hidden="true">💷</span>
+            <div class="onboarding-feature-text">
+              <h4>Control de precio</h4>
+              <p>Desliza el control para filtrar por tu presupuesto deseado.</p>
+            </div>
+          </div>
+        </div>
+        <div class="onboarding-actions">
+          <button class="onboarding-skip" onclick="closeOnboarding()">Saltar</button>
+          <button class="onboarding-next" onclick="nextStep(3)">Siguiente →</button>
+        </div>
+      </div>
+    </div>
+    <!-- Step 3 -->
+    <div class="onboarding-step" id="step-3">
+      <div class="onboarding-hero">
+        <span class="onboarding-emoji" aria-hidden="true">♿</span>
+        <h2 class="onboarding-title">Diseñado para<br><em>todos</em></h2>
+        <p class="onboarding-text">Personaliza tu experiencia con el panel de accesibilidad en la parte superior.</p>
+      </div>
+      <div class="onboarding-body">
+        <div class="onboarding-progress" role="progressbar" aria-valuenow="3" aria-valuemin="1" aria-valuemax="3" aria-label="Paso 3 de 3">
+          <div class="onboarding-dot"></div>
+          <div class="onboarding-dot"></div>
+          <div class="onboarding-dot active"></div>
+        </div>
+        <div class="onboarding-features">
+          <div class="onboarding-feature">
+            <span class="onboarding-feature-icon" aria-hidden="true">🌙</span>
+            <div class="onboarding-feature-text">
+              <h4>Modo Oscuro / Claro</h4>
+              <p>Cambia el tema para mayor comodidad visual en cualquier condición.</p>
+            </div>
+          </div>
+          <div class="onboarding-feature">
+            <span class="onboarding-feature-icon" aria-hidden="true">⌨️</span>
+            <div class="onboarding-feature-text">
+              <h4>Navegación completa</h4>
+              <p>Todo accesible con teclado (Tab, Enter, Escape) y lectores de pantalla.</p>
+            </div>
+          </div>
+        </div>
+        <div class="onboarding-actions">
+          <button class="onboarding-skip" onclick="closeOnboarding()">Saltar</button>
+          <button class="onboarding-next" onclick="closeOnboarding()" style="background: var(--gold); color: var(--navy);">¡Empezar! 🧀</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACCESSIBILITY MODAL -->
+<div class="a11y-modal-overlay" id="a11y-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="a11y-modal-title" aria-hidden="true">
+  <div class="a11y-modal" id="a11y-modal-inner">
+    <div class="a11y-modal-header">
+      <h2 class="a11y-modal-title" id="a11y-modal-title">♿ <span data-i18n="a11y_panel">Panel de Accesibilidad</span></h2>
+      <button class="a11y-modal-close" onclick="closeA11yPanel()" aria-label="Cerrar panel de accesibilidad">✕</button>
+    </div>
+    <div class="a11y-modal-grid">
+      <div class="a11y-card">
+        <div class="a11y-card-icon">🌙</div>
+        <div class="a11y-card-info">
+          <div class="a11y-card-title" data-i18n="a11y_dark">Modo Oscuro</div>
+          <div class="a11y-card-desc" data-i18n="a11y_dark_desc">Reduce la fatiga visual</div>
+        </div>
+        <button class="a11y-toggle" id="theme-btn" onclick="toggleTheme()" aria-pressed="false" aria-label="Alternar modo oscuro">
+          <span class="a11y-toggle-knob"></span>
+        </button>
+      </div>
+      <div class="a11y-card">
+        <div class="a11y-card-icon">⚪</div>
+        <div class="a11y-card-info">
+          <div class="a11y-card-title" data-i18n="a11y_contrast">Alto Contraste</div>
+          <div class="a11y-card-desc" data-i18n="a11y_contrast_desc">Mejora la legibilidad</div>
+        </div>
+        <button class="a11y-toggle" id="contrast-btn" onclick="toggleHighContrast()" aria-pressed="false" aria-label="Alternar alto contraste">
+          <span class="a11y-toggle-knob"></span>
+        </button>
+      </div>
+      <div class="a11y-card a11y-card-wide">
+        <div class="a11y-card-icon">T</div>
+        <div class="a11y-card-info">
+          <div class="a11y-card-title" data-i18n="a11y_spacing">Espaciado de Texto</div>
+          <div class="a11y-card-desc" data-i18n="a11y_spacing_desc">Ajusta la separación</div>
+        </div>
+        <div class="a11y-seg" role="group" aria-label="Espaciado de texto">
+          <button class="a11y-seg-btn active" id="spacing-normal" onclick="setSpacing('normal',this)" data-i18n="spacing_normal">Normal</button>
+          <button class="a11y-seg-btn" id="spacing-wide" onclick="setSpacing('wide',this)" data-i18n="spacing_wide">Amplio</button>
+          <button class="a11y-seg-btn" id="spacing-extra" onclick="setSpacing('extra',this)" data-i18n="spacing_extra">Extra</button>
+        </div>
+      </div>
+      <!-- Font size control -->
+      <div class="a11y-card a11y-card-wide">
+        <div class="a11y-card-icon" aria-hidden="true">Aa</div>
+        <div class="a11y-card-info">
+          <div class="a11y-card-title">Tamaño de Letra</div>
+          <div class="a11y-card-desc">Ajusta el tamaño del texto</div>
+        </div>
+        <div class="a11y-seg" role="group" aria-label="Tamaño de fuente">
+          <button class="a11y-seg-btn active" id="font-sm" onclick="setFontSize('small',this)" aria-pressed="false">Pequeño</button>
+          <button class="a11y-seg-btn active" id="font-md" onclick="setFontSize('normal',this)" aria-pressed="true">Normal</button>
+          <button class="a11y-seg-btn" id="font-lg" onclick="setFontSize('large',this)" aria-pressed="false">Grande</button>
+        </div>
+      </div>
+      <!-- Reduced motion toggle -->
+      <div class="a11y-card">
+        <div class="a11y-card-icon" aria-hidden="true">🎞</div>
+        <div class="a11y-card-info">
+          <div class="a11y-card-title">Reducir Movimiento</div>
+          <div class="a11y-card-desc">Desactiva animaciones</div>
+        </div>
+        <button class="a11y-toggle" id="motion-btn" onclick="toggleReducedMotion()" aria-pressed="false" aria-label="Reducir movimiento y animaciones">
+          <span class="a11y-toggle-knob"></span>
+        </button>
+      </div>
+      <div class="a11y-card a11y-card-wide">
+        <div class="a11y-card-icon">🌐</div>
+        <div class="a11y-card-info">
+          <div class="a11y-card-title" data-i18n="a11y_lang">Idioma</div>
+          <div class="a11y-card-desc" data-i18n="a11y_lang_desc">Cambia el idioma del sitio</div>
+        </div>
+        <div class="a11y-seg" role="group" aria-label="Seleccionar idioma">
+          <button class="a11y-seg-btn active" id="lang-es" onclick="setLanguage('es',this)">🇪🇸 Español</button>
+          <button class="a11y-seg-btn" id="lang-en" onclick="setLanguage('en',this)">🇬🇧 English</button>
+        </div>
+      </div>
+    </div>
+    <div class="a11y-modal-footer">
+      💡 <span data-i18n="a11y_autosave">Tus preferencias se guardan automáticamente</span>
+    </div>
+  </div>
+</div>
+
+<!-- ANNOUNCEMENT -->
+<div class="announcement" role="banner" aria-live="polite">
+  🚚 <strong>Envío 24h</strong> en toda el área de Nottingham · Pedidos antes de las 12:00 · <strong>Envío gratis</strong> en pedidos +£40
+</div>
+
+<!-- NAVBAR -->
+<nav id="main-nav" role="navigation" aria-label="Navegación principal">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero" aria-label="The Cheese Shop Nottingham - Inicio">
+      <span class="nav-logo-name">The Cheese Shop</span>
+      <span class="nav-logo-sub">Nottingham Ltd · Est. 2004</span>
+    </a>
+    <button class="hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú de navegación" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links" role="menubar">
+      <li role="none"><a href="#dashboard" role="menuitem" data-i18n="nav_dashboard">Dashboard</a></li>
+      <li role="none"><a href="#catalog" role="menuitem" data-i18n="nav_catalog">Catálogo</a></li>
+      <li role="none"><a href="#story" role="menuitem" data-i18n="nav_story">Nuestra Historia</a></li>
+      <li role="none"><a href="#cafe" role="menuitem" data-i18n="nav_cafe">Café & Sala</a></li>
+      <li role="none"><a href="#delivery" role="menuitem" data-i18n="nav_delivery">Envíos</a></li>
+      <li role="none"><a href="#contact" role="menuitem" data-i18n="nav_contact">Contacto</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-a11y-btn" onclick="openA11yPanel()" aria-label="Abrir panel de accesibilidad" id="a11y-nav-btn">
+        ♿ <span data-i18n="nav_accessibility">Accesibilidad</span>
+      </button>
+      <a href="login.html" class="nav-account-btn" aria-label="Iniciar sesión en tu cuenta">
+        👤 <span data-i18n="nav_account">Mi cuenta</span>
+      </a>
+      <button class="nav-cart-btn" onclick="openCart()" aria-label="Abrir carrito de compra, 0 artículos" id="cart-btn">
+        🛒
+        <span class="cart-count" id="cart-count" aria-hidden="true">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main id="main-content">
+
+<!-- HERO -->
+<section class="hero" id="hero" aria-labelledby="hero-title">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-noise" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow" aria-hidden="true">Est. 2004 · Centro de Nottingham</div>
+      <h1 class="hero-title" id="hero-title">
+        Artesanos del<br>
+        <em>Queso Británico</em>
+      </h1>
+      <p class="hero-desc">
+        Los hermanos Webb y Rob Freckingham, en el corazón de Nottingham, reuniendo los mejores quesos artesanales de las Islas Británicas desde 2004.
+      </p>
+      <div class="hero-btns">
+        <a href="#catalog" class="btn-gold">🧀 Ver Catálogo</a>
+        <a href="#delivery" class="btn-ghost">Envío 24h →</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-cards-grid">
+        <div class="hero-card">
+          <div class="hero-card-img">🧀</div>
+          <div class="hero-card-label">Selección Artesanal Británica</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-img">🫙</div>
+          <div class="hero-card-label">Salsas & Chutney</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-img">🍺</div>
+          <div class="hero-card-label">Cervezas Artesanales</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- DASHBOARD -->
+<section class="section" id="dashboard" aria-labelledby="dashboard-title">
+  <div class="container">
+    <div class="section-eyebrow">Resumen de actividad</div>
+    <h2 class="section-title" id="dashboard-title">Panel de <em>Información</em></h2>
+    <div class="dashboard-grid" role="list" aria-label="Estadísticas de la tienda">
+      <div class="dash-stat reveal" role="listitem">
+        <span class="dash-stat-icon" aria-hidden="true">🧀</span>
+        <div class="dash-stat-value" id="stat-products">30+</div>
+        <div class="dash-stat-label">Quesos disponibles</div>
+        <div class="dash-stat-trend trend-up" aria-label="Tendencia al alza">↑ 8 nuevos esta semana</div>
+      </div>
+      <div class="dash-stat reveal reveal-delay-1" role="listitem">
+        <span class="dash-stat-icon" aria-hidden="true">📦</span>
+        <div class="dash-stat-value" id="stat-orders">142</div>
+        <div class="dash-stat-label">Pedidos este mes</div>
+        <div class="dash-stat-trend trend-up" aria-label="Tendencia al alza">↑ +23% vs mes anterior</div>
+      </div>
+      <div class="dash-stat reveal reveal-delay-2" role="listitem">
+        <span class="dash-stat-icon" aria-hidden="true">⭐</span>
+        <div class="dash-stat-value">4.9</div>
+        <div class="dash-stat-label">Valoración media</div>
+        <div class="dash-stat-trend trend-up" aria-label="Valoración alta">↑ 312 reseñas verificadas</div>
+      </div>
+      <div class="dash-stat reveal reveal-delay-3" role="listitem">
+        <span class="dash-stat-icon" aria-hidden="true">🚚</span>
+        <div class="dash-stat-value">24h</div>
+        <div class="dash-stat-label">Tiempo de entrega</div>
+        <div class="dash-stat-trend trend-up" aria-label="Alta disponibilidad">✓ 98% de puntualidad</div>
+      </div>
+    </div>
+    <div class="dashboard-bottom">
+      <div class="dash-panel reveal">
+        <div class="dash-panel-header">
+          <h3 class="dash-panel-title">Pedidos Recientes</h3>
+          <span style="font-family:'Josefin Sans';font-size:10px;letter-spacing:1px;color:var(--gold);">Ver todos →</span>
+        </div>
+        <div class="dash-panel-body" id="recent-orders"></div>
+      </div>
+      <div class="dash-panel reveal reveal-delay-1">
+        <div class="dash-panel-header">
+          <h3 class="dash-panel-title">Más Populares</h3>
+        </div>
+        <div class="dash-panel-body" id="top-products"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="section" id="catalog" aria-labelledby="catalog-title">
+  <div class="container">
+    <div class="section-eyebrow">Nuestra selección</div>
+    <h2 class="section-title" id="catalog-title">Catálogo de <em>Quesos & Productos</em></h2>
+    <div class="catalog-layout">
+      <!-- FILTERS -->
+      <aside aria-label="Filtros de búsqueda" id="filters-aside">
+        <div class="filters-panel">
+          <div class="filter-title">
+            Filtros
+            <button class="filter-reset" onclick="resetFilters()" aria-label="Limpiar todos los filtros">Limpiar</button>
+          </div>
+          <div class="filter-group">
+            <label class="filter-group-label" for="search-input">Buscar</label>
+            <div class="search-input-wrap">
+              <span class="search-icon" aria-hidden="true">🔍</span>
+              <input type="search" id="search-input" class="search-input" placeholder="Nombre del queso..." aria-label="Buscar queso por nombre" oninput="applyFilters()">
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-group-label" id="cat-filter-label">Categoría</span>
+            <ul class="cat-filter-list" role="listbox" aria-labelledby="cat-filter-label" id="cat-filter-list">
+              <li role="option" aria-selected="true">
+                <button class="cat-filter-btn active" data-cat="all" onclick="setCatFilter('all',this)" aria-pressed="true">
+                  🌐 Todos <span class="cat-filter-count" id="count-all">30</span>
+                </button>
+              </li>
+              <li role="option" aria-selected="false">
+                <button class="cat-filter-btn" data-cat="soft" onclick="setCatFilter('soft',this)" aria-pressed="false">
+                  🫶 Suave <span class="cat-filter-count" id="count-soft">5</span>
+                </button>
+              </li>
+              <li role="option" aria-selected="false">
+                <button class="cat-filter-btn" data-cat="hard" onclick="setCatFilter('hard',this)" aria-pressed="false">
+                  🏔️ Duro <span class="cat-filter-count" id="count-hard">7</span>
+                </button>
+              </li>
+              <li role="option" aria-selected="false">
+                <button class="cat-filter-btn" data-cat="blue" onclick="setCatFilter('blue',this)" aria-pressed="false">
+                  💙 Azul <span class="cat-filter-count" id="count-blue">4</span>
+                </button>
+              </li>
+              <li role="option" aria-selected="false">
+                <button class="cat-filter-btn" data-cat="goat" onclick="setCatFilter('goat',this)" aria-pressed="false">
+                  🐐 Cabra <span class="cat-filter-count" id="count-goat">4</span>
+                </button>
+              </li>
+              <li role="option" aria-selected="false">
+                <button class="cat-filter-btn" data-cat="sheep" onclick="setCatFilter('sheep',this)" aria-pressed="false">
+                  🐑 Oveja <span class="cat-filter-count" id="count-sheep">4</span>
+                </button>
+              </li>
+              <li role="option" aria-selected="false">
+                <button class="cat-filter-btn" data-cat="british" onclick="setCatFilter('british',this)" aria-pressed="false">
+                  🇬🇧 Británicos <span class="cat-filter-count" id="count-british">3</span>
+                </button>
+              </li>
+              <li role="option" aria-selected="false">
+                <button class="cat-filter-btn" data-cat="accompaniment" onclick="setCatFilter('accompaniment',this)" aria-pressed="false">
+                  🫙 Acompañamientos <span class="cat-filter-count" id="count-accompaniment">3</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="filter-group">
+            <span class="filter-group-label" id="price-label">Precio máximo</span>
+            <div class="price-range-labels">
+              <span class="price-label">£1</span>
+              <span class="price-label">Hasta <span id="price-display">£110</span></span>
+            </div>
+            <input type="range" id="price-filter" min="1" max="110" value="110"
+              aria-labelledby="price-label" aria-valuenow="110" aria-valuemin="1" aria-valuemax="110"
+              oninput="updatePriceFilter(this)">
+          </div>
+          <div class="filter-group">
+            <label class="filter-group-label" for="sort-select">Ordenar por</label>
+            <select id="sort-select" class="sort-select" aria-label="Ordenar productos" onchange="applyFilters()">
+              <option value="default">Por defecto</option>
+              <option value="price-asc">Precio: menor a mayor</option>
+              <option value="price-desc">Precio: mayor a menor</option>
+              <option value="name-asc">Nombre: A–Z</option>
+              <option value="name-desc">Nombre: Z–A</option>
+              <option value="popular">Más populares</option>
+            </select>
+          </div>
+        </div>
+      </aside>
+      <!-- PRODUCTS -->
+      <div>
+        <div class="catalog-header">
+          <p class="catalog-count" aria-live="polite" aria-atomic="true" id="catalog-count">
+            Mostrando <strong id="showing-count">30</strong> de <strong>30</strong> productos
+          </p>
+          <div class="view-toggle" role="group" aria-label="Cambiar vista">
+            <button class="view-btn active" id="grid-btn" onclick="setView('grid')" aria-label="Vista cuadrícula" aria-pressed="true" title="Vista en cuadrícula">⊞</button>
+            <button class="view-btn" id="list-btn" onclick="setView('list')" aria-label="Vista lista" aria-pressed="false" title="Vista en lista">☰</button>
+          </div>
+        </div>
+        <div class="products-grid" id="products-grid" role="list" aria-label="Catálogo de productos"></div>
+        <div class="pagination" id="pagination" role="navigation" aria-label="Paginación"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="section" id="story" aria-labelledby="story-title">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-img-area reveal">
+        <div class="story-img-box" role="img" aria-label="Queso artesanal The Cheese Shop">🧀</div>
+        <div class="story-float-badge" aria-hidden="true">
+          <strong>2004</strong>
+          Fundados
+        </div>
+        <div class="story-stats-grid">
+          <div class="story-stat">
+            <div class="story-stat-num">30+</div>
+            <div class="story-stat-label">Quesos artesanales</div>
+          </div>
+          <div class="story-stat">
+            <div class="story-stat-num">20+</div>
+            <div class="story-stat-label">Años de experiencia</div>
+          </div>
+          <div class="story-stat">
+            <div class="story-stat-num">24h</div>
+            <div class="story-stat-label">Entrega local</div>
+          </div>
+          <div class="story-stat">
+            <div class="story-stat-num">100%</div>
+            <div class="story-stat-label">Artesanal</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="section-eyebrow">Nuestra historia</div>
+        <h2 class="section-title" id="story-title">Los hermanos Webb<br><em>& Freckingham</em></h2>
+        <p class="section-body" style="margin-bottom:20px;">
+          Ubicados en pleno centro de Nottingham, somos una quesería familiar fundada por los hermanos Webb y Rob Freckingham. Desde 2004 nos especializamos en quesos británicos de producción artesanal, cuidadosamente seleccionados de las mejores granjas de las Islas Británicas.
+        </p>
+        <p class="section-body" style="margin-bottom:36px;">
+          Más que una tienda, somos un destino. Un lugar donde los amantes del queso pueden descubrir, degustar y llevarse a casa lo mejor de la tradición quesera británica, acompañado de salsas, cervezas, vinos y licores artesanales.
+        </p>
+        <a href="#contact" class="btn-primary">Visítanos en Nottingham →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAFÉ -->
+<section class="section" id="cafe" aria-labelledby="cafe-title">
+  <div class="container">
+    <div class="cafe-grid">
+      <div class="cafe-media reveal" aria-hidden="true">
+        <div class="cafe-img-lg">☕</div>
+        <div class="cafe-img-sm">🧀</div>
+        <div class="cafe-img-sm">🥂</div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="section-eyebrow">Nuestra sala</div>
+        <h2 class="section-title" id="cafe-title">Un rincón para<br><em>disfrutar</em></h2>
+        <p class="section-body">En The Cheese Shop no solo vendemos queso — ofrecemos una experiencia única en el corazón de Nottingham.</p>
+        <div class="cafe-features">
+          <div class="cafe-feature">
+            <div class="cafe-feature-icon" aria-hidden="true">☕</div>
+            <div>
+              <h3 class="cafe-feature-title">Café de especialidad</h3>
+              <p class="cafe-feature-desc">Sírvete un café artesanal mientras exploras nuestra selección o simplemente descansas del ajetreo de la ciudad.</p>
+            </div>
+          </div>
+          <div class="cafe-feature">
+            <div class="cafe-feature-icon" aria-hidden="true">🧀</div>
+            <div>
+              <h3 class="cafe-feature-title">Tablas de queso artesanales</h3>
+              <p class="cafe-feature-desc">Ven con amigos y disfruta de una tabla seleccionada por nuestros expertos, con acompañamientos perfectos.</p>
+            </div>
+          </div>
+          <div class="cafe-feature">
+            <div class="cafe-feature-icon" aria-hidden="true">🤝</div>
+            <div>
+              <h3 class="cafe-feature-title">Espacio de reunión</h3>
+              <p class="cafe-feature-desc">Ambiente íntimo y acogedor. Ideal para comidas informales con colegas o amigos en un entorno único.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<section id="delivery" aria-labelledby="delivery-title">
+  <div class="container">
+    <div class="delivery-grid">
+      <div class="reveal">
+        <div class="delivery-eyebrow">Servicio de paquetería</div>
+        <h2 class="delivery-title" id="delivery-title">Quesos en tu puerta<br>en <em>24 horas</em></h2>
+        <p class="delivery-text">Llevamos la experiencia de The Cheese Shop a toda el área de Nottingham. Nuestro servicio de paquetería garantiza que tus quesos lleguen frescos y perfectamente embalados.</p>
+        <div class="delivery-steps" role="list">
+          <div class="delivery-step" role="listitem">
+            <div class="step-num" aria-hidden="true">01</div>
+            <div>
+              <div class="step-title">Elige tus quesos</div>
+              <p class="step-desc">Selecciona en línea o llámanos para asesoramiento personalizado.</p>
+            </div>
+          </div>
+          <div class="delivery-step" role="listitem">
+            <div class="step-num" aria-hidden="true">02</div>
+            <div>
+              <div class="step-title">Embalaje especializado</div>
+              <p class="step-desc">Cada queso se embala con cuidado para preservar su frescura y calidad óptimas.</p>
+            </div>
+          </div>
+          <div class="delivery-step" role="listitem">
+            <div class="step-num" aria-hidden="true">03</div>
+            <div>
+              <div class="step-title">Entrega en 24 horas</div>
+              <p class="step-desc">Mensajería urgente en todo el área de Nottinghamshire. Pedidos antes de las 12:00.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="delivery-badge-box reveal reveal-delay-1">
+        <div class="delivery-badge-icon" aria-hidden="true">🚚</div>
+        <div class="delivery-badge-title">Entrega<br>Garantizada<br>en 24h</div>
+        <p class="delivery-badge-text">Cobertura: Nottingham y alrededores. Pedidos antes de las 12:00 para entrega al día siguiente.</p>
+        <a href="#contact" class="btn-cream">Hacer un Pedido 📦</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter" aria-labelledby="newsletter-title">
+  <div class="newsletter-inner reveal">
+    <div aria-hidden="true" style="font-size:40px;margin-bottom:16px;">📧</div>
+    <h2 class="newsletter-title" id="newsletter-title">Suscríbete a nuestras novedades</h2>
+    <p class="newsletter-text">Nuevos quesos, eventos de cata, ofertas especiales y consejos de maridaje directamente en tu bandeja de entrada.</p>
+    <form class="newsletter-form-wrap" onsubmit="handleNewsletter(event)" novalidate>
+      <label for="newsletter-email" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Correo electrónico</label>
+      <input type="email" id="newsletter-email" class="newsletter-input" placeholder="tu@email.com" aria-label="Tu correo electrónico" required>
+      <button type="submit" class="newsletter-submit">Suscribirse →</button>
+    </form>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-eyebrow">Encuéntranos</div>
+        <h2 class="section-title" id="contact-title">Visítanos o<br><em>contáctanos</em></h2>
+        <p class="section-body">Estamos en el corazón de Nottingham. Ven, realiza un pedido o simplemente charla sobre queso con nuestro equipo.</p>
+        <div class="contact-info-list">
+          <div class="contact-info-item reveal">
+            <div class="contact-icon" aria-hidden="true">📍</div>
+            <div>
+              <div class="contact-info-label">Dirección</div>
+              <div class="contact-info-value">6 Flying Horse Walk<br>Nottingham City Centre<br>NG1 2HN, United Kingdom</div>
+            </div>
+          </div>
+          <div class="contact-info-item reveal reveal-delay-1">
+            <div class="contact-icon" aria-hidden="true">🕐</div>
+            <div>
+              <div class="contact-info-label">Horario</div>
+              <div class="contact-info-value">Lun–Vie: 9:00 – 17:30<br>Sábado: 9:00 – 17:00<br>Domingo: 10:00 – 15:00</div>
+            </div>
+          </div>
+          <div class="contact-info-item reveal reveal-delay-2">
+            <div class="contact-icon" aria-hidden="true">📞</div>
+            <div>
+              <div class="contact-info-label">Teléfono</div>
+              <div class="contact-info-value">
+                <a href="tel:+441159418011" style="color:inherit;text-decoration:none;">+44 (0)115 941 8011</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-info-item reveal reveal-delay-3">
+            <div class="contact-icon" aria-hidden="true">✉️</div>
+            <div>
+              <div class="contact-info-label">Email</div>
+              <div class="contact-info-value">
+                <a href="/cdn-cgi/l/email-protection#f79e999198b7839f92949f92928492849f9887d99498d9829c" style="color:var(--gold);"><span class="__cf_email__" data-cfemail="e48d8a828ba4908c81878c81819781978c8b94ca878bca918f">[email&#160;protected]</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="form-card">
+          <h3 class="form-heading">Realizar un pedido</h3>
+          <form id="order-form" onsubmit="handleFormSubmit(event)" novalidate aria-label="Formulario de pedido">
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label" for="fname">Nombre <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="fname" class="form-input" placeholder="Tu nombre" autocomplete="given-name" required aria-required="true" oninput="validateField(this)">
+                <div class="form-hint" role="alert" aria-live="polite" id="fname-hint"></div>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="lname">Apellidos <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="lname" class="form-input" placeholder="Tus apellidos" autocomplete="family-name" required aria-required="true" oninput="validateField(this)">
+                <div class="form-hint" role="alert" aria-live="polite" id="lname-hint"></div>
+              </div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input type="email" id="email" class="form-input" placeholder="tu@email.com" autocomplete="email" required aria-required="true" oninput="validateField(this)">
+              <div class="form-hint" role="alert" aria-live="polite" id="email-hint"></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="address">Dirección de entrega <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="address" class="form-input" placeholder="Tu dirección en Nottingham" autocomplete="street-address" required aria-required="true" oninput="validateField(this)">
+              <div class="form-hint" role="alert" aria-live="polite" id="address-hint"></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="category">Tipo de producto</label>
+              <select id="category" class="form-select" aria-label="Seleccionar tipo de queso o producto"
+                onchange="renderProductPicker(this.value)">
+                <option value="">Selecciona una categoría</option>
+                <option value="soft">🫶 Quesos Suaves</option>
+                <option value="hard">🏔️ Quesos Duros</option>
+                <option value="blue">💙 Quesos Azules</option>
+                <option value="goat">🐐 Quesos de Cabra</option>
+                <option value="sheep">🐑 Quesos de Oveja</option>
+                <option value="british">🇬🇧 Británicos</option>
+                <option value="accompaniment">🫙 Salsas & Acompañamientos</option>
+              </select>
+            </div>
+            <!-- Dynamic product picker -->
+            <div id="product-picker-wrap"></div>
+            <!-- Selected products summary -->
+            <div class="picker-selected-wrap" id="picker-selected-wrap">
+              <div class="picker-selected-title">🧀 Productos seleccionados</div>
+              <ul class="picker-selected-list" id="picker-selected-list"></ul>
+              <div class="picker-total" id="picker-total"></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="message">Mensaje o solicitud especial</label>
+              <textarea id="message" class="form-textarea" placeholder="Cuéntanos qué necesitas, cantidad, ocasión especial..." aria-label="Mensaje opcional" rows="4"></textarea>
+            </div>
+            <button type="submit" class="form-submit-btn" id="submit-btn" aria-live="polite">
+              <span id="btn-text">Enviar Pedido</span> →
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main><!-- /main -->
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">The Cheese Shop</div>
+      <div class="footer-brand-sub">Nottingham Ltd · Est. 2004</div>
+      <p class="footer-brand-text">Quesería artesanal en el corazón de Nottingham. Especialistas en quesos británicos, con más de 20 años seleccionando los mejores quesos de las Islas Británicas.</p>
+    </div>
+    <div class="footer-col">
+      <h2 class="footer-col-title">Quesos</h2>
+      <ul>
+        <li><a href="#catalog">Suaves</a></li>
+        <li><a href="#catalog">Duros</a></li>
+        <li><a href="#catalog">Azules</a></li>
+        <li><a href="#catalog">De Cabra</a></li>
+        <li><a href="#catalog">De Oveja</a></li>
+        <li><a href="#catalog">Británicos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h2 class="footer-col-title">La Tienda</h2>
+      <ul>
+        <li><a href="#story">Nuestra Historia</a></li>
+        <li><a href="#cafe">Café & Sala</a></li>
+        <li><a href="#delivery">Envío 24h</a></li>
+        <li><a href="#contact">Contacto</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h2 class="footer-col-title">Información</h2>
+      <ul>
+        <li><a href="#">Política de envíos</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Términos</a></li>
+        <li><a href="#">Accesibilidad</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 The Cheese Shop Nottingham Ltd.</span>
+    <span>Diseñado con ♿ accesibilidad · <a href="/cdn-cgi/l/email-protection#ea83848c85aa9e828f89828f8f998f9982859ac48985c49f81"><span class="__cf_email__" data-cfemail="2a43444c456a5e424f49424f4f594f5942455a044945045f41">[email&#160;protected]</span></a></span>
+  </div>
+</footer>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-product-name" onclick="handleModalOverlayClick(event)">
+  <div class="modal" id="modal-inner">
+    <button class="modal-close" onclick="closeModal()" aria-label="Cerrar detalle del producto">✕</button>
+    <div class="modal-hero-img" id="modal-img-bg">
+      <span id="modal-emoji" style="font-size:100px;"></span>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meta">
+        <span class="modal-cat" id="modal-cat"></span>
+        <span class="modal-origin" id="modal-origin"></span>
+      </div>
+      <h2 class="modal-name" id="modal-product-name"></h2>
+      <p class="modal-tagline" id="modal-tagline"></p>
+      <p class="modal-description" id="modal-desc"></p>
+      <div class="modal-attributes" id="modal-attrs"></div>
+      <div class="modal-pairing" id="modal-pairing-wrap">
+        <div class="modal-pairing-title">🍷 Maridaje Recomendado</div>
+        <p class="modal-pairing-text" id="modal-pairing"></p>
+      </div>
+      <div class="modal-purchase">
+        <div>
+          <div class="modal-price">
+            £<span id="modal-price">0.00</span>
+            <small id="modal-weight-label"></small>
+          </div>
+        </div>
+        <div class="qty-control" role="group" aria-label="Cantidad">
+          <button class="qty-btn" onclick="changeQty(-1)" aria-label="Reducir cantidad">−</button>
+          <input type="number" class="qty-display" id="modal-qty" value="1" min="1" max="20" readonly aria-label="Cantidad seleccionada">
+          <button class="qty-btn" onclick="changeQty(1)" aria-label="Aumentar cantidad">+</button>
+        </div>
+        <button class="modal-add-btn" id="modal-add-btn" onclick="addToCartFromModal()" aria-label="Añadir al carrito">
+          🛒 Añadir al Carrito
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()" aria-hidden="true"></div>
+<aside class="cart-sidebar" id="cart-sidebar" role="complementary" aria-label="Carrito de compra" aria-hidden="true">
+  <div class="cart-header">
+    <h2 class="cart-title">🛒 Tu Carrito</h2>
+    <button class="cart-close" onclick="closeCart()" aria-label="Cerrar carrito">✕</button>
+  </div>
+  <div class="cart-empty" id="cart-empty">
+    <div class="cart-empty-icon">🧀</div>
+    <div class="cart-empty-text">Tu carrito está vacío</div>
+    <p class="cart-empty-sub">Explora nuestro catálogo y añade tus quesos favoritos.</p>
+  </div>
+  <div class="cart-items" id="cart-items-list" role="list" aria-label="Artículos en el carrito"></div>
+  <div class="cart-footer" id="cart-footer" style="display:none;">
+    <div class="cart-subtotal">
+      <span class="cart-subtotal-label">Total</span>
+      <span class="cart-subtotal-value">£<span id="cart-total">0.00</span></span>
+    </div>
+    <div class="cart-note" aria-label="Envío gratuito disponible">✅ Envío gratis en pedidos +£40</div>
+    <button class="cart-checkout-btn" onclick="handleCheckout()" aria-label="Proceder al pago">
+      Proceder al Pago →
+    </button>
+  </div>
+</aside>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toast-container" role="status" aria-live="polite" aria-atomic="true"></div>
+
+<!-- Inline fallback: onboarding critical functions available before app.js -->
+<script>
+function nextStep(n) {
+  document.querySelectorAll('.onboarding-step').forEach(function(s) { s.classList.remove('active'); });
+  var step = document.getElementById('step-' + n);
+  if (step) { step.classList.add('active'); var btn = step.querySelector('button'); if(btn) btn.focus(); }
+}
+function closeOnboarding() {
+  var ob = document.getElementById('onboarding');
+  if (ob) ob.classList.add('hidden');
+  try { sessionStorage.setItem('onboarding-seen', '1'); } catch(e) {}
+  var mc = document.getElementById('main-content');
+  if (mc) mc.focus();
+}
+</script>
+<script src="app.js" defer></script>
+</body>
+</html>

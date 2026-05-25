@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar Sesión · The Cheese Shop Nottingham</title>
+<meta name="description" content="Accede a tu cuenta en The Cheese Shop Nottingham. Gestiona tus pedidos y preferencias de quesos artesanales.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Josefin+Sans:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<!-- CURSOR FOG EFFECT -->
+<div class="cursor-fog" id="cursor-fog" aria-hidden="true"></div>
+<!-- CHEESE CURSOR -->
+<div class="cursor-cheese" id="cursor-cheese" aria-hidden="true">🧀</div>
+
+<!-- SKIP LINK -->
+<a href="#login-form" class="skip-link">Saltar al formulario de inicio de sesión</a>
+
+<!-- TOP BAR -->
+<header class="top-bar" role="banner">
+  <a class="top-bar-brand" href="index.html" aria-label="The Cheese Shop Nottingham">
+    <span class="top-bar-name">The Cheese Shop</span>
+    <span class="top-bar-sub">Nottingham Ltd · Est. 2004</span>
+  </a>
+  <div class="top-bar-right">
+    <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" aria-pressed="false" aria-label="Alternar modo oscuro">
+      <i class="fa-solid fa-moon" aria-hidden="true"></i> <span id="theme-label">Modo Oscuro</span>
+    </button>
+  </div>
+</header>
+
+<!-- MAIN LAYOUT -->
+<div class="login-layout" role="main">
+
+  <!-- LEFT: DECORATIVE VISUAL -->
+  <div class="login-visual" aria-hidden="true">
+    <div class="login-visual-noise"></div>
+    <div class="visual-content">
+      <span class="visual-emoji">🧀</span>
+      <h2 class="visual-title">
+        Tu cuenta en<br><em>The Cheese Shop</em>
+      </h2>
+      <p class="visual-text">
+        Accede a tu perfil para gestionar pedidos, guardar favoritos y recibir recomendaciones personalizadas de quesos artesanales.
+      </p>
+      <div class="visual-badges">
+        <div class="visual-badge">
+          <span class="visual-badge-icon"><i class="fa-solid fa-bag-shopping"></i></span>
+          <div>
+            <div class="visual-badge-text">Historial de pedidos</div>
+            <div class="visual-badge-sub">Revisa y repite tus pedidos anteriores.</div>
+          </div>
+        </div>
+        <div class="visual-badge">
+          <span class="visual-badge-icon">♥</span>
+          <div>
+            <div class="visual-badge-text">Lista de favoritos</div>
+            <div class="visual-badge-sub">Guarda los quesos que más te gustan.</div>
+          </div>
+        </div>
+        <div class="visual-badge">
+          <span class="visual-badge-icon">🚚</span>
+          <div>
+            <div class="visual-badge-text">Envío prioritario</div>
+            <div class="visual-badge-sub">Clientes registrados: acceso a 24h garantizado.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="visual-decoration" aria-hidden="true">🧀</div>
+  </div>
+
+  <!-- RIGHT: FORM PANEL -->
+  <div class="login-form-panel" id="login-form">
+    <div class="login-card">
+      <div class="login-eyebrow">Tu cuenta</div>
+      <h1 class="login-heading" id="form-heading">Bienvenido <em>de vuelta</em></h1>
+      <p class="login-subtext" id="form-subtext">Inicia sesión o crea una cuenta nueva para acceder a todos los beneficios.</p>
+
+      <!-- TABS -->
+      <div class="auth-tabs" role="tablist" aria-label="Selección de formulario">
+        <button class="auth-tab active" id="tab-login" role="tab" aria-selected="true" aria-controls="panel-login" onclick="switchTab('login')">
+          Iniciar sesión
+        </button>
+        <button class="auth-tab" id="tab-register" role="tab" aria-selected="false" aria-controls="panel-register" onclick="switchTab('register')">
+          Crear cuenta
+        </button>
+      </div>
+
+      <!-- ── LOGIN PANEL ── -->
+      <div class="auth-panel active" id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+        <form id="login-form-el" onsubmit="handleLogin(event)" novalidate aria-label="Formulario de inicio de sesión">
+
+          <div class="form-field">
+            <label class="form-label" for="login-email">
+              Correo electrónico <span class="req" aria-hidden="true">*</span>
+            </label>
+            <div class="input-wrap">
+              <span class="input-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+              <input type="email" id="login-email" class="form-input"
+                placeholder="tu@email.com"
+                autocomplete="email"
+                required aria-required="true"
+                aria-describedby="login-email-hint"
+                oninput="validateLoginField(this)">
+            </div>
+            <div class="form-hint" id="login-email-hint" role="alert" aria-live="polite"></div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="login-pass">
+              Contraseña <span class="req" aria-hidden="true">*</span>
+            </label>
+            <div class="input-wrap">
+              <span class="input-icon" aria-hidden="true"><i class="fa-solid fa-lock"></i></span>
+              <input type="password" id="login-pass" class="form-input"
+                placeholder="Tu contraseña"
+                autocomplete="current-password"
+                required aria-required="true"
+                aria-describedby="login-pass-hint"
+                oninput="validateLoginField(this)">
+              <button type="button" class="password-toggle"
+                onclick="togglePasswordVisibility('login-pass', this)"
+                aria-label="Mostrar contraseña">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="form-hint" id="login-pass-hint" role="alert" aria-live="polite"></div>
+          </div>
+
+          <div class="form-extras">
+            <label class="checkbox-wrap">
+              <input type="checkbox" id="remember-me" aria-label="Recordarme en este dispositivo">
+              <span class="checkbox-label">Recordarme</span>
+            </label>
+            <a href="#" class="forgot-link" onclick="handleForgotPassword(event)">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <button type="submit" class="submit-btn" id="login-submit-btn">
+            <span id="login-btn-text">Iniciar Sesión</span>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </button>
+
+          <div class="divider">O continúa con</div>
+
+          <div class="social-btns" role="group" aria-label="Opciones de inicio de sesión social">
+            <button type="button" class="social-btn social-btn--google" onclick="socialLogin('google')" aria-label="Iniciar sesión con Google">
+              <i class="fa-brands fa-google social-icon" aria-hidden="true"></i> Google
+            </button>
+            <button type="button" class="social-btn social-btn--github" onclick="socialLogin('github')" aria-label="Iniciar sesión con GitHub">
+              <i class="fa-brands fa-github social-icon" aria-hidden="true"></i> GitHub
+            </button>
+          </div>
+
+          <div class="auth-switch" role="note">
+            ¿No tienes cuenta?
+            <button type="button" onclick="switchTab('register')" aria-label="Ir al formulario de registro">Crear una cuenta</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- ── REGISTER PANEL ── -->
+      <div class="auth-panel" id="panel-register" role="tabpanel" aria-labelledby="tab-register">
+        <form id="register-form-el" onsubmit="handleRegister(event)" novalidate aria-label="Formulario de creación de cuenta">
+
+          <div class="name-row">
+            <div class="form-field">
+              <label class="form-label" for="reg-fname">
+                Nombre <span class="req" aria-hidden="true">*</span>
+              </label>
+              <div class="input-wrap">
+                <span class="input-icon" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
+                <input type="text" id="reg-fname" class="form-input"
+                  placeholder="Nombre"
+                  autocomplete="given-name"
+                  required aria-required="true" minlength="2"
+                  aria-describedby="reg-fname-hint"
+                  oninput="validateRegField(this)">
+              </div>
+              <div class="form-hint" id="reg-fname-hint" role="alert" aria-live="polite"></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="reg-lname">
+                Apellidos <span class="req" aria-hidden="true">*</span>
+              </label>
+              <div class="input-wrap">
+                <span class="input-icon" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
+                <input type="text" id="reg-lname" class="form-input"
+                  placeholder="Apellidos"
+                  autocomplete="family-name"
+                  required aria-required="true" minlength="2"
+                  aria-describedby="reg-lname-hint"
+                  oninput="validateRegField(this)">
+              </div>
+              <div class="form-hint" id="reg-lname-hint" role="alert" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="reg-email">
+              Correo electrónico <span class="req" aria-hidden="true">*</span>
+            </label>
+            <div class="input-wrap">
+              <span class="input-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+              <input type="email" id="reg-email" class="form-input"
+                placeholder="tu@email.com"
+                autocomplete="email"
+                required aria-required="true"
+                aria-describedby="reg-email-hint"
+                oninput="validateRegField(this)">
+            </div>
+            <div class="form-hint" id="reg-email-hint" role="alert" aria-live="polite"></div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="reg-pass">
+              Contraseña <span class="req" aria-hidden="true">*</span>
+            </label>
+            <div class="input-wrap">
+              <span class="input-icon" aria-hidden="true"><i class="fa-solid fa-lock"></i></span>
+              <input type="password" id="reg-pass" class="form-input"
+                placeholder="Mínimo 8 caracteres"
+                autocomplete="new-password"
+                required aria-required="true" minlength="8"
+                aria-describedby="reg-pass-hint strength-label"
+                oninput="validateRegField(this); updateStrength(this.value)">
+              <button type="button" class="password-toggle"
+                onclick="togglePasswordVisibility('reg-pass', this)"
+                aria-label="Mostrar contraseña">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i>
+              </button>
+            </div>
+            <!-- Strength bar -->
+            <div class="strength-bar" role="progressbar" aria-label="Fortaleza de contraseña" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="strength-fill" id="strength-fill"></div>
+            </div>
+            <div class="strength-label" id="strength-label" aria-live="polite"></div>
+            <div class="strength-requirements" id="strength-requirements" aria-live="polite">
+              <span class="req-item" id="req-length"><i class="fa-solid fa-circle-xmark"></i> Mínimo 8 caracteres</span>
+              <span class="req-item" id="req-upper"><i class="fa-solid fa-circle-xmark"></i> Una mayúscula</span>
+              <span class="req-item" id="req-number"><i class="fa-solid fa-circle-xmark"></i> Un número</span>
+              <span class="req-item" id="req-special"><i class="fa-solid fa-circle-xmark"></i> Un carácter especial</span>
+            </div>
+            <div class="form-hint" id="reg-pass-hint" role="alert" aria-live="polite"></div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="reg-pass-confirm">
+              Confirmar contraseña <span class="req" aria-hidden="true">*</span>
+            </label>
+            <div class="input-wrap">
+              <span class="input-icon" aria-hidden="true"><i class="fa-solid fa-lock-open"></i></span>
+              <input type="password" id="reg-pass-confirm" class="form-input"
+                placeholder="Repite tu contraseña"
+                autocomplete="new-password"
+                required aria-required="true"
+                aria-describedby="reg-pass-confirm-hint"
+                oninput="validateRegField(this)">
+            </div>
+            <div class="form-hint" id="reg-pass-confirm-hint" role="alert" aria-live="polite"></div>
+          </div>
+
+          <div class="terms-field">
+            <label class="checkbox-wrap">
+              <input type="checkbox" id="terms" required aria-required="true" aria-describedby="terms-desc terms-hint">
+              <span class="checkbox-label" id="terms-desc">
+                Acepto los <a href="#" class="terms-link">términos de uso</a> y la <a href="#" class="terms-link">política de privacidad</a>
+              </span>
+            </label>
+            <div class="form-hint" id="terms-hint" role="alert" aria-live="polite"></div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="register-submit-btn">
+            <span id="reg-btn-text">Crear mi cuenta</span>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </button>
+
+          <div class="auth-switch" role="note">
+            ¿Ya tienes cuenta?
+            <button type="button" onclick="switchTab('login')" aria-label="Ir al formulario de inicio de sesión">Inicia sesión aquí</button>
+          </div>
+        </form>
+      </div>
+
+    </div><!-- /login-card -->
+  </div><!-- /login-form-panel -->
+
+</div><!-- /login-layout -->
+
+<!-- FOOTER -->
+<footer class="login-footer" role="contentinfo">
+  <span>© 2024 The Cheese Shop Nottingham Ltd · </span>
+  <a href="index.html">← Volver a la tienda</a>
+  <span> · </span>
+  <a href="#">Accesibilidad</a>
+  <span> · </span>
+  <a href="#">Privacidad</a>
+</footer>
+
+<!-- TOAST -->
+<div class="toast-container" id="toast-container" role="status" aria-live="polite" aria-atomic="true"></div>
+
+<script src="login.js"></script>
+</body>
+</html>
