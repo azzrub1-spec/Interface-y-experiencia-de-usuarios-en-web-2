@@ -2,12 +2,12 @@
 // DATA - PRODUCT CATALOG
 // ═══════════════════════════════════════════
 const PRODUCTS = [
-  { id:1,  name:"Brie de Meaux",           cat:"soft",         emoji:"🫶", img:"imagenes/brie de meaux.jpg",            origin:"Île-de-France, Francia",       tagline:"La reina de los quesos suaves",                  desc:"Queso de pasta blanda con corteza enmohecida blanca, textura cremosa y sabores suaves con notas de champiñón y tierra.",         price:8.50,  weight:"250g",   intensity:"Suave",       milk:"Vaca",   maturity:"4 semanas",   pairing:"Vino Champagne, Pinot Noir ligero o manzana verde.",           badge:"popular", popular:true },
-  { id:2,  name:"Camembert de Normandie",  cat:"soft",         emoji:"🧀", img:"imagenes/camembert de Normandie.jpg",       origin:"Normandía, Francia",            tagline:"Sabor profundo y carácter único",                desc:"Queso de leche cruda con corteza blanca, más intenso que el Brie. Suave y cremoso con aromas complejos de tierra y nata.",          price:7.20,  weight:"250g",   intensity:"Medio",       milk:"Vaca",   maturity:"3 semanas",   pairing:"Calvados, sidra normanda o vino blanco Burgundy." },
-  { id:3,  name:"Burrata Italiana",        cat:"soft",         emoji:"🤍", img:"imagenes/Burrata italiana.jpg",          origin:"Puglia, Italia",                tagline:"Seda líquida envuelta en mozzarella",            desc:"El exterior es mozzarella fresca y el interior contiene stracciatella y nata, creando una explosión de cremosidad.",                price:9.80,  weight:"200g",   intensity:"Muy suave",   milk:"Vaca",   maturity:"Fresco",      pairing:"Tomate heirloom, aceite de oliva y albahaca fresca.",          badge:"new" },
+  { id:1,  name:"Brie de Meaux",           cat:"soft",         emoji:"🫶", img:"imagenes/brie-de-meaux.jpg",            origin:"Île-de-France, Francia",       tagline:"La reina de los quesos suaves",                  desc:"Queso de pasta blanda con corteza enmohecida blanca, textura cremosa y sabores suaves con notas de champiñón y tierra.",         price:8.50,  weight:"250g",   intensity:"Suave",       milk:"Vaca",   maturity:"4 semanas",   pairing:"Vino Champagne, Pinot Noir ligero o manzana verde.",           badge:"popular", popular:true },
+  { id:2,  name:"Camembert de Normandie",  cat:"soft",         emoji:"🧀", img:"imagenes/camembert-de-normandie.jpg",       origin:"Normandía, Francia",            tagline:"Sabor profundo y carácter único",                desc:"Queso de leche cruda con corteza blanca, más intenso que el Brie. Suave y cremoso con aromas complejos de tierra y nata.",          price:7.20,  weight:"250g",   intensity:"Medio",       milk:"Vaca",   maturity:"3 semanas",   pairing:"Calvados, sidra normanda o vino blanco Burgundy." },
+  { id:3,  name:"Burrata Italiana",        cat:"soft",         emoji:"🤍", img:"imagenes/burrata-italiana.jpg",          origin:"Puglia, Italia",                tagline:"Seda líquida envuelta en mozzarella",            desc:"El exterior es mozzarella fresca y el interior contiene stracciatella y nata, creando una explosión de cremosidad.",                price:9.80,  weight:"200g",   intensity:"Muy suave",   milk:"Vaca",   maturity:"Fresco",      pairing:"Tomate heirloom, aceite de oliva y albahaca fresca.",          badge:"new" },
   { id:4,  name:"Taleggio",               cat:"soft",         emoji:"🟠", img:"imagenes/taleggio.jpg",                  origin:"Lombardía, Italia",             tagline:"Suave y goloso con aroma intenso",              desc:"Queso lavado semi-suave con corteza rosacea y pasta cremosa. Su olor es fuerte pero su sabor resulta suave y mantecoso.",           price:11.50, weight:"300g",   intensity:"Medio-Alto",  milk:"Vaca",   maturity:"6-10 semanas",pairing:"Peras maduras, nueces o vino tinto Chianti." },
   { id:5,  name:"Reblochon",              cat:"soft",         emoji:"🟡", img:"imagenes/reblochon.jpg",                 origin:"Saboya, Francia",               tagline:"El alma de los Alpes en un queso",              desc:"Queso lavado con corteza anaranjada y pasta suave con aroma persistente. Base del famoso tartiflette.",                             price:10.20, weight:"500g",   intensity:"Medio",       milk:"Vaca",   maturity:"3-4 semanas", pairing:"Vino blanco de Saboya, Apremont o sidra seca." },
-  { id:6,  name:"Cheddar Extra Madurado", cat:"hard",         emoji:"🏔️", img:"imagenes/Cheddar Extra Madurado.jpg",   origin:"Somerset, England",             tagline:"El rey indiscutible del queso británico",       desc:"Madurado durante 18 meses, presenta una textura densa y granular con notas de caramelo, nuez y un toque picante al final.",         price:12.80, weight:"300g",   intensity:"Fuerte",      milk:"Vaca",   maturity:"18 meses",    pairing:"Ale amarga de Nottingham, uvas o chutney de mango.",           badge:"british", popular:true },
+  { id:6,  name:"Cheddar Extra Madurado", cat:"hard",         emoji:"🏔️", img:"imagenes/cheddar-extra-madurado.jpg",   origin:"Somerset, England",             tagline:"El rey indiscutible del queso británico",       desc:"Madurado durante 18 meses, presenta una textura densa y granular con notas de caramelo, nuez y un toque picante al final.",         price:12.80, weight:"300g",   intensity:"Fuerte",      milk:"Vaca",   maturity:"18 meses",    pairing:"Ale amarga de Nottingham, uvas o chutney de mango.",           badge:"british", popular:true },
   { id:7,  name:"Parmigiano Reggiano",    cat:"hard",         emoji:"⭐", img:"imagenes/parmigiano-reggiano.jpg",       origin:"Emilia-Romaña, Italia",         tagline:"El rey de los quesos italianos",                desc:"El queso más famoso del mundo. Granuloso, cristalino, con intensas notas de umami, frutos secos y caramelo salado.",               price:18.50, weight:"300g",   intensity:"Muy Fuerte",  milk:"Vaca",   maturity:"24 meses",    pairing:"Prosecco, vino tinto Barolo o miel de acacia.",                badge:"popular" },
   { id:8,  name:"Manchego Curado",        cat:"hard",         emoji:"🇪🇸", img:"imagenes/manchego-curado.jpg",          origin:"La Mancha, España",             tagline:"Firmeza y carácter de la meseta",               desc:"Elaborado con leche de oveja manchega, presenta corteza rayada característica y pasta densa con sabores complejos y persistentes.",  price:14.20, weight:"300g",   intensity:"Fuerte",      milk:"Oveja", maturity:"6 meses",     pairing:"Jerez amontillado, jamón ibérico o membrillo." },
   { id:9,  name:"Gruyère AOC",            cat:"hard",         emoji:"🟡", img:"imagenes/gruyere-aoc.jpg",              origin:"Friburgo, Suiza",               tagline:"El complemento perfecto para fondues",          desc:"Queso alpino de larga tradición con pequeños ojos, sabor frutal y complejo que se vuelve más pronunciado con la maduración.",       price:13.90, weight:"300g",   intensity:"Medio-Fuerte",milk:"Vaca",   maturity:"12 meses",    pairing:"Fendant suizo, cerveza de trigo o manzana Golden." },
@@ -438,9 +438,45 @@ function closeOnboarding() {
 // ═══════════════════════════════════════════
 // DASHBOARD
 // ═══════════════════════════════════════════
-var liveOrders = RECENT_ORDERS.slice();
-var liveOrderCount = 142;
 var newOrdersCount = 0;
+
+// Restore from localStorage or use defaults
+function loadOrdersFromStorage() {
+  try {
+    const saved = localStorage.getItem('liveOrders');
+    const savedCount = localStorage.getItem('liveOrderCount');
+    if (saved) {
+      const orders = JSON.parse(saved).map(o => ({
+        ...o,
+        timestamp: o.timestamp ? new Date(o.timestamp) : null
+      }));
+      return {
+        orders: orders,
+        count: savedCount ? parseInt(savedCount, 10) : 142
+      };
+    }
+    return { orders: RECENT_ORDERS.slice(), count: 142 };
+  } catch(e) {
+    return { orders: RECENT_ORDERS.slice(), count: 142 };
+  }
+}
+
+const _stored = loadOrdersFromStorage();
+var liveOrders = _stored.orders;
+var liveOrderCount = _stored.count;
+
+function saveOrdersToStorage() {
+  try {
+    // Timestamps se pierden en JSON, los convertimos a string
+    const toSave = liveOrders.map(o => ({
+      ...o,
+      timestamp: o.timestamp ? o.timestamp.toString() : null,
+      isNew: false  // al recargar ya no son "nuevos"
+    }));
+    localStorage.setItem('liveOrders', JSON.stringify(toSave));
+    localStorage.setItem('liveOrderCount', String(liveOrderCount));
+  } catch(e) {}
+}
 
 var STATUS_LABELS = {
   pending:   { icon: '⏳', text: 'Pendiente',  cls: 'badge-pending' },
@@ -450,12 +486,14 @@ var STATUS_LABELS = {
 
 function formatOrderTime(timestamp) {
   if (!timestamp) return '';
+  var ts = (timestamp instanceof Date) ? timestamp : new Date(timestamp);
+  if (isNaN(ts.getTime())) return '';
   var now = new Date();
-  var diff = Math.floor((now - timestamp) / 1000);
+  var diff = Math.floor((now - ts) / 1000);
   if (diff < 60)    return 'Hace unos segundos';
   if (diff < 3600)  return 'Hace ' + Math.floor(diff / 60) + ' min';
   if (diff < 86400) return 'Hace ' + Math.floor(diff / 3600) + 'h';
-  return timestamp.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' });
+  return ts.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' });
 }
 
 function renderDashboard() {
@@ -551,6 +589,7 @@ function cycleOrderStatus(orderId) {
   if (!order) return;
   var cycle = { pending: 'transit', transit: 'delivered', delivered: 'pending' };
   order.status = cycle[order.status] || 'pending';
+  saveOrdersToStorage();  
   renderDashboard();
   var st = STATUS_LABELS[order.status];
   toast('Pedido #' + orderId + ' > ' + st.icon + ' ' + st.text);
@@ -576,6 +615,7 @@ function addLiveOrder(orderId, cartSnapshot, grandTotal) {
   if (liveOrders.length > 10) liveOrders.pop();
   liveOrderCount++;
   newOrdersCount++;
+  saveOrdersToStorage(); 
 
   var statEl = document.getElementById('stat-orders');
   if (statEl) {
@@ -607,6 +647,7 @@ function updateOrderStatus(orderId, newStatus) {
   if (!order || order.status === 'delivered') return;
   order.status = newStatus;
   if (order.timestamp) order.date = formatOrderTime(order.timestamp);
+  saveOrdersToStorage();
   renderDashboard();
   var labels = { transit: '🚚 Tu pedido está en camino', delivered: '✅ Tu pedido ha sido entregado' };
   if (labels[newStatus]) toast(labels[newStatus] + ' — #' + orderId, newStatus === 'delivered' ? 'success' : '');
