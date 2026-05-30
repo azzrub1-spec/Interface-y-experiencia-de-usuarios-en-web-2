@@ -187,15 +187,15 @@ function setSpacing(level, btn) {
 }
 
 function setFontSize(size, btn) {
-  const html = document.documentElement;
-  html.setAttribute('data-font', size);
-  const scales = { small: 0.9, normal: 1, large: 1.25 };
-  html.style.fontSize = 'calc(16px * ' + scales[size] + ')';
-  document.querySelectorAll('#font-sm,#font-md,#font-lg').forEach(b => {
+  document.documentElement.setAttribute('data-font', size);
+  document.querySelectorAll('#font-sm, #font-md, #font-lg').forEach(b => {
     b.classList.remove('active');
     b.setAttribute('aria-pressed', 'false');
   });
-  if (btn) { btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true'); }
+  if (btn) {
+    btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
+  }
   localStorage.setItem('fontSize', size);
   const labels = { small: 'Letra pequeña', normal: 'Letra normal', large: 'Letra grande' };
   toast('🔡 ' + (labels[size] || 'Tamaño ajustado'));
