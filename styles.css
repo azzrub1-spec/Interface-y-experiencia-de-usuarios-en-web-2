@@ -3051,8 +3051,8 @@ html { scroll-behavior: smooth; font-size: 16px; }
   }
 }
 html[data-font="small"]  { font-size: 14px !important; }
-html[data-font="normal"] { font-size: 16px !important; }
-html[data-font="large"]  { font-size: 20px !important; }
+html[data-font="normal"] { font-size: 24!important; }
+html[data-font="large"]  { font-size: 32 !important; }
 
 /* Reduced motion class */
 html.reduce-motion *, 
